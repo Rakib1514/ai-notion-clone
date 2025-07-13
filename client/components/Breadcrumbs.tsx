@@ -5,6 +5,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
+  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
@@ -26,12 +27,17 @@ function Breadcrumbs() {
           if (!segment) return null;
 
           const href = `/${segments.slice(0, idx + 1).join("/")}`;
+          const isLast = idx === segments.length - 1;
 
           return (
             <Fragment key={idx}>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
+                {isLast ? (
+                  <BreadcrumbPage>{segment}</BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
+                )}
               </BreadcrumbItem>
             </Fragment>
           );

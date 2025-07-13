@@ -27,10 +27,10 @@ function Document({ id }: { id: string }) {
 
   return (
     <div>
-      <div>
-        <form onSubmit={updateTitle}>
+      <div className="flex max-w-6xl mx-auto justify-between pb-5">
+        <form onSubmit={updateTitle} className="flex space-x-2 w-full">
           {/* Update Title */}
-          <Input value={input} onChange={(e) => setInput(e.target.value)} />
+          <Input value={input} onChange={(e) => setInput(e.target.value)} className="bg-white"/>
 
           {/* If (isOwner) && inviteUser, DeleteDocument */}
           <Button disabled={isUpdating} type="submit">

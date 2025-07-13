@@ -1,16 +1,11 @@
 "use client";
 
 import { SignedIn } from "@clerk/clerk-react";
-import {
-  SignedOut,
-  SignInButton,
-  UserButton,
-  useUser
-} from "@clerk/nextjs";
+import { SignedOut, SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import Breadcrumbs from "./Breadcrumbs";
 
 function Header() {
-
-  // Get User from hook by clerk 
+  // Get User from hook by clerk
   const { user } = useUser();
 
   return (
@@ -22,7 +17,7 @@ function Header() {
         </h1>
       )}
 
-      {/* Breadcrumbs */}
+      <Breadcrumbs />
 
       <div>
         <SignedOut>

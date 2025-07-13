@@ -12,47 +12,47 @@ import { usePathname } from "next/navigation";
 import { Fragment } from "react";
 
 function Breadcrumbs() {
-  
+  // Get the current pathname from Next.js.
   const path = usePathname();
 
   // Split the path into individual segments. For example, if the path is
-  // "/foo/bar", then segments will be ["foo", "bar"].
+  // "/doc/GOI9VDso86uyQFUIjSaN", then segments will be ["doc", "GOI9VDso86uyQFUIjSaN"].
   const segments = path.split("/");
 
-  
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {/* The first breadcrumb item is always "Home". */}
+        {/* The first breadcrumb is always "Home"*/}
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
 
-        {/* Loop through each segment and create a breadcrumb item. */}
+        
         {segments.map((segment, idx) => {
-          // If the segment is empty, then skip it.
           if (!segment) return null;
 
-          // Create the href for the breadcrumb item.
+          // The href for each breadcrumb is the concatenation of the previous
+          // segments. For example, if the current segment is "bar" and the
+          // previous segment was "foo", then the href will be "/foo/bar".
           const href = `/${segments.slice(0, idx + 1).join("/")}`;
 
-          // Determine if the current item is the last one in the list.
+          // If this is the last segment, then we should render it as a
+          // BreadcrumbPage component instead of a BreadcrumbLink. This is
+          // because the last segment is the current page, and we don't want
+          // the user to be able to click on it and navigate away.
           const isLast = idx === segments.length - 1;
 
-          // Return a fragment that contains a separator and the breadcrumb item.
+          
           return (
             <Fragment key={idx}>
-              {/* The separator is only shown if this is not the first item. */}
               <BreadcrumbSeparator />
-
-              {/* Create the breadcrumb item. */}
               <BreadcrumbItem>
-                {/* If this is the last item in the list, then make it a page
-                item (i.e. not a link). */}
                 {isLast ? (
+                  // If this is the last segment, then render it as a
+                  // BreadcrumbPage.
                   <BreadcrumbPage>{segment}</BreadcrumbPage>
                 ) : (
-                  {/* Otherwise, make it a link. */}
+                  // Otherwise, render it as a BreadcrumbLink.
                   <BreadcrumbLink href={href}>{segment}</BreadcrumbLink>
                 )}
               </BreadcrumbItem>

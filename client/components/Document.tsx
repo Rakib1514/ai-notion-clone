@@ -1,13 +1,15 @@
-import { FormEvent, useEffect, useState, useTransition } from "react";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebase";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import Editor from "./Editor";
 import useOwner from "@/lib/useOwner";
+import { doc, updateDoc } from "firebase/firestore";
+import { FormEvent, useEffect, useState, useTransition } from "react";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 import DeleteDocument from "./DeleteDocument";
+import Editor from "./Editor";
 import InviteUser from "./InviteUser";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import ManageUsers from "./ManageUsers";
+import Avatars from "./Avatars";
 
 function Document({ id }: { id: string }) {
   const [data, loading, error] = useDocumentData(doc(db, "documents", id));
@@ -58,10 +60,12 @@ function Document({ id }: { id: string }) {
         </form>
       </div>
 
-      <div>
+      <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
         {/* Mange Users */}
+          <ManageUsers/>
 
         {/* Avatar */}
+        <Avatars />
       </div>
       <hr className="pb-10" />
 

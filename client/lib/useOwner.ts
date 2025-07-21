@@ -29,6 +29,6 @@ function useOwner() {
     }
   }, [user, usersInRoom]);
 
-  return
+  return isOwner;
 }
 export default useOwner;

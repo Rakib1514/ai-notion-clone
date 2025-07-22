@@ -66,7 +66,7 @@ function InviteUser() {
 
           <Button
             type="submit"
-            disabled={isPending || isPending}
+            disabled={!email || isPending}
           >
             {isPending ? "Inviting..." : "Invite "}
           </Button>

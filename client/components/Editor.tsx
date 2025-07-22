@@ -1,19 +1,19 @@
 "use client";
 
+import "@blocknote/core/fonts/inter.css";
+import { useCreateBlockNote } from "@blocknote/react";
+import "@blocknote/react/style.css";
+import { BlockNoteView } from "@blocknote/shadcn";
+import "@blocknote/shadcn/style.css";
 import { useRoom, useSelf } from "@liveblocks/react/suspense";
+import { LiveblocksYjsProvider } from "@liveblocks/yjs";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import * as Y from "yjs";
-import { LiveblocksYjsProvider } from "@liveblocks/yjs";
 import { Button } from "./ui/button";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { BlockNoteView } from "@blocknote/shadcn";
-import { blockNoteEditor } from "@blocknote/core";
-import { useCreateBlockNote } from "@blocknote/react";
-import "@blocknote/core/fonts/inter.css";
-import "@blocknote/shadcn/style.css";
-import "@blocknote/react/style.css";
 
 import stringToColor from "@/lib/stringToColor";
+import TranslateDocument from "./TranslateDocument";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -77,6 +77,7 @@ function Editor() {
     <div className="max-w-6xl mx-auto">
       <div className="flex items-center justify-end gap-2 mb-10">
         {/* Translate Document */}
+        <TranslateDocument doc={doc} />
         {/* ChatToDocument AI */}
 
         {/* Dark Mode */}

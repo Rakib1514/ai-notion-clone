@@ -19,11 +19,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { toast } from "sonner";
 import { BotIcon } from "lucide-react";
-import Markdown from "react-markdown";
-import { BlockNoteView } from "@blocknote/shadcn";
-import { json } from "stream/consumers";
+import { toast } from "sonner";
 
 type Language =
   | "english"
@@ -77,7 +74,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
       let plainText = "";
 
       textTags.forEach((node) => {
-        const content = node.textContent.trim();
+        const content = node.textContent ? node.textContent.trim() : "";
         if (content) {
           plainText += content + "\n"; // add line break after each block
         }
@@ -136,7 +133,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
                 GPT {isPending ? "is thinking..." : "Says:"}
               </p>
             </div>
-            <Markdown>{summary}</Markdown>
+            <p>{summary}</p>
           </div>
         )}
 

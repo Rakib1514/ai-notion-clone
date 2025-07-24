@@ -1,4 +1,4 @@
-import { adminDb } from "@/firebase-admin";
+import { adminDb } from "../../firebase-admin";
 import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";

@@ -14,6 +14,8 @@ import { Button } from "./ui/button";
 
 import stringToColor from "@/lib/stringToColor";
 import TranslateDocument from "./TranslateDocument";
+import { BlockNoteEditor } from "@blocknote/core";
+import ChatToDocument from "./ChatToDocument";
 
 type EditorProps = {
   doc: Y.Doc;
@@ -79,6 +81,7 @@ function Editor() {
         {/* Translate Document */}
         <TranslateDocument doc={doc} />
         {/* ChatToDocument AI */}
+        <ChatToDocument doc={doc} />
 
         {/* Dark Mode */}
 

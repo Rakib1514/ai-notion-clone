@@ -12,9 +12,17 @@ import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";
 
 function Document({ id }: { id: string }) {
-  const [data, loading, error] = useDocumentData(doc(db, "documents", id));
+  const [data] = useDocumentData(doc(db, "documents", id));
   const [input, setInput] = useState("");
   const [isUpdating, startTransition] = useTransition();
+  const [showAvatars, setShowAvatars] = useState(false);
+
+  // ✅ Safely trigger avatars visibility after mount
+  useEffect(() => {
+    startTransition(() => {
+      setShowAvatars(true);
+    });
+  }, []);
 
   const isOwner = useOwner();
 
@@ -62,10 +70,10 @@ function Document({ id }: { id: string }) {
 
       <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
         {/* Mange Users */}
-          <ManageUsers/>
+        <ManageUsers />
 
         {/* Avatar */}
-        <Avatars />
+        {showAvatars && <Avatars />}
       </div>
       <hr className="pb-10" />
 

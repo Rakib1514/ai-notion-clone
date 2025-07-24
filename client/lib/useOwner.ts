@@ -1,4 +1,4 @@
-import { db } from "../firebase";
+import { db } from "@/firebase";
 import { useUser } from "@clerk/nextjs";
 import { useRoom } from "@liveblocks/react/suspense";
 import { collectionGroup, query, where } from "firebase/firestore";

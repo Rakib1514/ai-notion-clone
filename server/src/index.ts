@@ -22,6 +22,38 @@ app.use(
 );
 app.get('/', (c) => c.text('Hello World!'));
 
+app.post('/chatToDocument', async (c) => {
+
+	// Need to set up OpenAI with your API key to env variable
+	const openai = new OpenAI({
+		apiKey: c.env.OPEN_AI_KEY,
+	});
+
+	const { documentData, question } = await c.req.json();
+
+	const chatCompletion = await openai.chat.completions.create({
+		messages: [
+			{
+				role: 'system',
+				content:
+					' You are a assistant helping the user to chat to a document, I am providing a JSON file of the document. Using this, answer the users question in the clearest way possible, and give markdown in response with batter style. The document is about' +
+					documentData,
+			},
+			{
+				role: 'user',
+				content: 'question is: ' + question,
+			},
+		],
+		model: "gpt-4o-mini",
+		temperature: 0.5,
+		
+	});
+
+	const response = chatCompletion.choices[0].message.content;
+
+	return c.json({ message: response });
+});
+
 app.post('/translateDocument', async (c) => {
 	const { documentData, targetLang } = await c.req.json();
 

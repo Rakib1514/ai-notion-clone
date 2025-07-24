@@ -12,7 +12,8 @@
 	},
 	"ai": {
 		"binding": "AI"
-	}
+	},
+	
 
 	/**
 	 * Smart Placement

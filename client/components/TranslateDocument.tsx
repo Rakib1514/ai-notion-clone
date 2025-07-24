@@ -80,8 +80,6 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
       });
       const documentData = plainText.trim();
 
-      console.log(documentData);
-
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/translateDocument`,
         {
@@ -119,7 +117,6 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
           </DialogDescription>
 
           <hr className="mt-5" />
-
         </DialogHeader>
 
         {summary && (

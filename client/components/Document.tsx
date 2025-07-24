@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";
-import { db } from "@/firebase";
+import { db } from "../firebase";
 
 function Document({ id }: { id: string }) {
   const [data] = useDocumentData(doc(db, "documents", id));

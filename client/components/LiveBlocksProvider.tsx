@@ -7,7 +7,6 @@ function LiveBlocksProvider({ children }: { children: React.ReactNode }) {
     throw new Error("NEXT_PUBLIC_LIVEBLOCK_PUBLIC_KEY is not defined");
   }
 
-  console.log(process.env.NEXT_PUBLIC_LIVEBLOCK_PUBLIC_KEY);
 
   return (
     <LiveblocksProvider throttle={16} authEndpoint={"/auth-endpoint"}>

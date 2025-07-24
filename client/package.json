@@ -19,6 +19,7 @@
     "@liveblocks/react": "^3.1.2",
     "@liveblocks/react-blocknote": "^3.1.2",
     "@liveblocks/react-ui": "^3.1.2",
+    "@netlify/plugin-nextjs": "^5.11.6",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-select": "^2.2.5",
